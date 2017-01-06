@@ -3,8 +3,13 @@ if (!require(NLRoot)) {
   require(NLRoot)
 } # pobieranie paczki pochodnych
 
-f <- function(x){3*x^3+3} # definicja liczonej funkcji
+a <- 0 #minimum
+b <- 2 #maximum
 
-BFfzero(f,0,2) # Bisekcja
+f <- function(x){
+  x^3-x-1
+} # definicja liczonej funkcji
+
+BFfzero(f, a, b, num = 10, eps = 1e-05) # Bisekcja
 
 curve(f, xlim=c(-3,3), col='blue', lwd=1.5, lty=2)
