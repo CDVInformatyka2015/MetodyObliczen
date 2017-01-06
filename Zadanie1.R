@@ -3,13 +3,14 @@ if (!require(NLRoot)) {
   require(NLRoot)
 } # pobieranie paczki pochodnych
 
-a <- 0 #minimum
-b <- 2 #maximum
+a <- -5 # początek przedziału
+b <- 2 # koniec przedziału
 
-f <- function(x){
-  x^3-x-1
-} # definicja liczonej funkcji
+f <- function(x){3*x^3+3} # definicja liczonej funkcji
 
-BFfzero(f, a, b, num = 10, eps = 1e-05) # Bisekcja
-
-curve(f, xlim=c(-3,3), col='blue', lwd=1.5, lty=2)
+if (f(a)*f(b)<0) {
+  BFfzero(f,a,b) # bisekcja
+} else {
+  print("Zalozenie o przeciwnych znakach nie jest spelnione! Wybierz inny przedzial.")
+}
+curve(f, xlim=c(a,b), col='blue', lwd=1.5, lty=2) # wykres
